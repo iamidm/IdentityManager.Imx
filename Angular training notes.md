@@ -55,3 +55,26 @@
     - Hide a tile on the page.
         - imxweb\projects\qer\src\lib\wport\start\start.component.html
             
+#Building packages
+-Libraries
+    - npm run build:lib <libname (qbm)>
+-Application
+    - npm run build:app qer-app-portal
+- Zip files in the <lib> dir to file with name html_<libname>
+    - In the "IdentityManager.Imx\imxweb\dist\rps" dir make "Html_rps.zip"
+- Delete C:\Users\OneIM\Git\IdentityManager.Imx\imxweb\dist\qer-app-portal\html folder befor zipping qer-app-portal
+- move all the zip files to the custom folder on the webserver.
+    - wwwroot\ApiServer\bin\imxweb\custom
+- iis reset
+-
+# Updates from OIM
+- Switch to the none dev branche
+    - Build lib from rebased OIM master branch
+    - Move these to the inetpub folder
+
+#Git oppsett ?
+- Lage branch fra OIM
+    - Lage en Dev branch fra denne
+    - Hver utvilker lager så en branch av denne igjen.
+    - Disse samles i Dev branch.
+    
