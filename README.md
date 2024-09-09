@@ -2,6 +2,7 @@
 
 # Identity Manager HTML5 applications
 
+
 ## Change log
 
 ### October 8, 2024
