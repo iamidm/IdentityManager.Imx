@@ -1,3 +1,4 @@
+#Initial setup
 - Clone repo - git clone (https://github.com/iamidm/IdentityManager.Imx.git)
 - Make dev branch from clone i VSCode
 - Install node -https://nodejs.org/en/download/prebuilt-installer/current
@@ -27,6 +28,8 @@
     - All the others in npm-build:
         ng build --watch --configuration dynamic <modulename>
         - apc and sac
+
+#Starting portal in local machine
     -After all the builds:
         - Start new Terminal:
             - C:\Program Files\One Identity\One Identity Manager> .\ImxClient.exe run-apiserver -B
@@ -42,3 +45,13 @@
             - Launch to http://localhost:4200/#/ for the app portal.
             - Login Iden. (rolebased) with manos / xxxxxxxxxxxxxxxxxx
 
+#CSS
+ - Legge tilpassninger i imxweb\projects\qer-app-portal\src\styles.scss
+    -  Greit når man skal merge/rebase mot ny kode fra OID master
+    - Legge på !important for å tvinge igjennom, men anbefalses ikke!!
+    - Her må vi sjekke mer. Dårlig opplæring på dette.
+
+#Hiding stuff
+    - Hide a tile on the page.
+        - imxweb\projects\qer\src\lib\wport\start\start.component.html
+            

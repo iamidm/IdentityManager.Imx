@@ -117,6 +117,7 @@ imx-data-explorer-accounts {
 }
 
 // Custom styling changens
-.mat-toolbar-single-row {
- background-color: red($color: #000000);
-}
+// Virker IKKE
+//.mat-toolbar-single-row {
+ //background-color: red!important;
+//}
