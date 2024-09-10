@@ -34,7 +34,7 @@ import { ExclusionCheckComponent } from './shopping-cart-validation-detail/exclu
 import { DuplicateCheckComponent } from './shopping-cart-validation-detail/duplicate-check/duplicate-check.component';
 // tslint:disable-next-line: max-line-length
 import { ProductDependencyCheckComponent } from './shopping-cart-validation-detail/product-dependency-check/product-dependency-check.component';
-
+import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +51,8 @@ export class QerService {
     this.validationDetailService.register(ExclusionCheckComponent, 'ExclusionCheck');
     this.validationDetailService.register(DuplicateCheckComponent, 'DuplicateCheck');
     this.validationDetailService.register(ProductDependencyCheckComponent, 'ProductDependencyCheck');
+
+    this.extService.register('Dashboard-MediumTiles', {instance: UserContractsTileComponent});
+ 
   }
 }

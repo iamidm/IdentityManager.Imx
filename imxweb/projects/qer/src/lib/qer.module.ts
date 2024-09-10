@@ -58,6 +58,7 @@ import { UserModule } from './user/user.module';
 import { BusinessOwnerChartSummaryComponent } from './wport/businessowner-chartsummary/businessowner-chartsummary.component';
 import { StartComponent } from './wport/start/start.component';
 import { UserContractsComponent } from './contracts/user-contracts/user-contracts.component';
+import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
 import { ContractsModule } from './contracts/contracts.module';
 import { RouterModule, Router, Routes } from '@angular/router';
 
@@ -110,8 +111,9 @@ const routes: Routes = [
     ShoppingCartValidationDetailModule,
     FkAdvancedPickerModule,
     ContractsModule,
+    RouterModule.forChild(routes),
     ],
-  exports: [UserContractsComponent],
+  exports: [UserContractsComponent, UserContractsTileComponent],
   providers: [
     {
       provide: APP_INITIALIZER,
