@@ -4,19 +4,19 @@
 - Make dev branch from clone i VSCode
 - Install node -<https://nodejs.org/en/download/prebuilt-installer/current>
 - Install angular cli - npm install -g @angular/cli
-
 - package.json shown commands to run
 - imxmodules folder
   - kompessed api files for the API server
+  - These are the "OID" defaults from GIT Master. Must be updated in prod when OID releases new code.
 - projects folder
   - Most important
   - Complete code for IT Shop
   - Subdirectory for different modules
   - Static libraries QBE / QBM
   - All other are dynamic libraries
-- folder with -app- are the applications that show in the portal
+  - folder with -app- are the applications that show in the portal
 - Install dependencies
-  - PS C:\Users\OneIM\Git\IdentityManager.Imx> cd .\imxweb\
+  - C:\Users\OneIM\Git\IdentityManager.Imx> cd .\imxweb\
   - npm install
 - Install lib (be in imxweb directory)
   - QBM always first
@@ -28,7 +28,7 @@
         ng build --watch --configuration dynamic tsb
   - All the others in npm-build:
         ng build --watch --configuration dynamic <modulename>
-    - apc and sac
+    - apc and sac libs are new. Must be included alsjo
 
 ## Starting portal in local machine
 
@@ -86,3 +86,25 @@
   - Lage en Dev branch fra denne
   - Hver utvilker lager så en branch av denne igjen.
   - Disse samles i Dev branch.
+
+## Add custom module to portal
+    - In Terminal in imxweb Directory
+    - Add module
+        - ng generate module contracts --project=qer
+    - Add component user-contracts to the contracts module
+        - ng generate component contracts/user-contracts --project=qer --style=css --export --prefix=ccc [--skiptest]
+    - imxweb\projects\qer\src\public_api.ts
+        - export { ContractsModule } from './lib/contracts/contracts.module';
+          export { UserContractsComponent } from './lib/contracts/user-contracts/user-contracts.component';
+    - imxweb\projects\qer\src\lib\qer.module.ts
+        - import { UserContractsComponent } from './contracts/user-contracts/user-contracts.component';
+        - import { ContractsModule } from './contracts/contracts.module';
+        - import { RouterModule, Router, Routes } from '@angular/router';
+        -  imports: [ 
+            -Add ContractsModule,
+        -  Add between ],providers: [
+            -> exports: [UserContractsComponent],
+        
+    
+        
+    
