@@ -87,7 +87,7 @@
   - Hver utvilker lager så en branch av denne igjen.
   - Disse samles i Dev branch.
 
-## Add custom module to portal
+## Add custom module to portal as a new menu item.
     - In Terminal in imxweb Directory
     - Add module
         - ng generate module contracts --project=qer
@@ -102,9 +102,39 @@
         - import { RouterModule, Router, Routes } from '@angular/router';
         -  imports: [ 
             -Add ContractsModule,
+            -Add RouterModule.forChild(routes),
         -  Add between ],providers: [
             -> exports: [UserContractsComponent],
         
-    
-        
+## Add custom module as Tile to portal
+    - In terminal in imxweb dir.
+    - Add a component to the contracts module
+        ng generate component contracts/user-contracts-tile --project=qer --style=scss --export --prefix=ccc [--skiptest]
+    - imxweb\projects\qer\src\public_api.ts
+        - export { UserContractsTileComponent } from './lib/contracts/user-contracts-tile/user-contracts-tile.component';
+        - imxweb\projects\qer\src\lib\contracts\contracts.module.ts
+            -import { TilesModule } from './../tiles/tiles.module';
+            - import { MatButtonModule } from '@angular/material/button';
+    - imxweb\projects\qer\src\lib\qer.module.ts
+        - import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
+        - Add to exports: [UserContractsComponent, UserContractsTileComponent], (before providers: [)
+        - Add to imxweb\projects\qer\src\lib\contracts\user-contracts-tile\user-contracts-tile.component.html
+            <imx-icon-tile
+            [caption]="'Contracts'"
+            [subtitle]="'Some subtitle'"
+            [image]="'user'"
+            >
+            <ng-template #ActionTemplate>
+            <button mat-button color="primary">
+                <span>{{'View'}}</span>
+                <eui-icon size="m" icon="forward"></eui-icon>
+            </button>
+            </ng-template>
+        </imx-icon-tile>
+    - imxweb\projects\qer\src\lib\qer.service.ts
+        - import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
+        -  add after this.validationDetailService.register(ProductDependencyCheckComponent, 'ProductDependencyCheck');
+            - this.extService.register('Dashboard-MediumTiles', {instance: UserContractsTileComponent});
+            
+
     

@@ -207,4 +207,5 @@ export { AuthenticationFactors } from './lib/admin/authentication-factors.interf
 /* Custom */
 export { ContractsModule } from './lib/contracts/contracts.module';
 export { UserContractsComponent } from './lib/contracts/user-contracts/user-contracts.component';
+export { UserContractsTileComponent } from './lib/contracts/user-contracts-tile/user-contracts-tile.component';
 

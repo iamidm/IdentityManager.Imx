@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserContractsComponent } from './user-contracts/user-contracts.component';
 import { MenuService } from 'qbm';
-
+import { UserContractsTileComponent } from './user-contracts-tile/user-contracts-tile.component';
+import { TilesModule } from './../tiles/tiles.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
-    UserContractsComponent
+    UserContractsComponent,
+    UserContractsTileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,TilesModule,MatButtonModule
   ],
   exports: [
-    UserContractsComponent
+    UserContractsComponent,
+    UserContractsTileComponent
   ]
 })
 
