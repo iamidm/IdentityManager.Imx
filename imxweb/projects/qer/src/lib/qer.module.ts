@@ -25,7 +25,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Component, Inject, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EuiCoreModule, EuiMaterialModule } from '@elemental-ui/core';
 import { TranslateModule } from '@ngx-translate/core';
@@ -41,6 +41,7 @@ import {
   FkAdvancedPickerModule,
   LdsReplaceModule,
   QbmModule,
+  RouteGuardService,
   TileModule,
 } from 'qbm';
 
@@ -56,6 +57,9 @@ import { TilesModule } from './tiles/tiles.module';
 import { UserModule } from './user/user.module';
 import { BusinessOwnerChartSummaryComponent } from './wport/businessowner-chartsummary/businessowner-chartsummary.component';
 import { StartComponent } from './wport/start/start.component';
+import { UserContractsComponent } from './contracts/user-contracts/user-contracts.component';
+import { ContractsModule } from './contracts/contracts.module';
+import { RouterModule, Router, Routes } from '@angular/router';
 
 export function initConfig(config: QerService): () => Promise<any> {
   return () =>
@@ -66,6 +70,15 @@ export function initConfig(config: QerService): () => Promise<any> {
       resolve();
     });
 }
+
+const routes: Routes = [
+  {
+    path: 'contracts',
+    component: UserContractsComponent,
+    canActivate: [RouteGuardService],
+    resolve: [RouteGuardService]
+  }
+]
 
 // @dynamic
 @NgModule({
@@ -96,7 +109,9 @@ export function initConfig(config: QerService): () => Promise<any> {
     DataTreeModule,
     ShoppingCartValidationDetailModule,
     FkAdvancedPickerModule,
-  ],
+    ContractsModule,
+    ],
+  exports: [UserContractsComponent],
   providers: [
     {
       provide: APP_INITIALIZER,
