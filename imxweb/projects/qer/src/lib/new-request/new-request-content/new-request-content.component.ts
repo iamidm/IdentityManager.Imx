@@ -46,6 +46,15 @@ import { SelectedProductItem } from '../new-request-selected-products/selected-p
 import { NewRequestSelectionService } from '../new-request-selection.service';
 import { NewRequestAddToCartService } from '../new-request-add-to-cart.service';
 import { ProjectConfigurationService } from '../../project-configuration/project-configuration.service';
+import {
+  PortalPersonRolemembershipsAerole,
+  PortalPersonRolemembershipsDepartment,
+  PortalPersonRolemembershipsItshoporg,
+  PortalPersonRolemembershipsLocality,
+  PortalPersonRolemembershipsProfitcenter
+} from 'imx-api-qer';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfitcenterDialogComponent } from './profitcenter-dialog/profitcenter-dialog.component';
 
 @Component({
   selector: 'imx-new-request-content',
@@ -71,6 +80,7 @@ export class NewRequestContentComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly sidesheetService: EuiSidesheetService,
     private readonly translate: TranslateService,
+    public dialog: MatDialog
   ) {
     
     this.navLinks.push({
@@ -109,6 +119,7 @@ export class NewRequestContentComponent implements OnInit, OnDestroy {
   }
 
   public async ngOnInit(): Promise<void> {
+   // this.getProfitCenterList()
     const projectConfig = await this.projectConfigService.getConfig();
     const canSelectFromTemplate = projectConfig.ITShopConfig.VI_ITShop_ProductSelectionFromTemplate;
     const canSelectByRefUser = projectConfig.ITShopConfig.VI_ITShop_ProductSelectionByReferenceUser;
@@ -183,6 +194,13 @@ export class NewRequestContentComponent implements OnInit, OnDestroy {
   }
 
   public async pushCandidatesToCart(): Promise<void> {
-    this.addToCartService.addItemsToCart();
+      this.getProfitCenterList();
+      this.addToCartService.addItemsToCart();
   }
+  private getProfitCenterList(): string {
+    const dialogRef = this.dialog.open(ProfitcenterDialogComponent,{data:{"One":"Two"}})
+     return "Profitcenter list OK";     
+  }
+  
 }
+

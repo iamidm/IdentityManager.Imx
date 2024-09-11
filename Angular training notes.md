@@ -109,11 +109,11 @@
 ## Add custom module as Tile to portal
     - In terminal in imxweb dir.
     - Add a component to the contracts module
-        ng generate component contracts/user-contracts-tile --project=qer --style=scss --export --prefix=ccc [--skiptest]
+        - ng generate component contracts/user-contracts-tile --project=qer --style=scss --export --prefix=ccc [--skiptest]
     - imxweb\projects\qer\src\public_api.ts
         - export { UserContractsTileComponent } from './lib/contracts/user-contracts-tile/user-contracts-tile.component';
         - imxweb\projects\qer\src\lib\contracts\contracts.module.ts
-            -import { TilesModule } from './../tiles/tiles.module';
+            - import { TilesModule } from './../tiles/tiles.module';
             - import { MatButtonModule } from '@angular/material/button';
     - imxweb\projects\qer\src\lib\qer.module.ts
         - import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
@@ -135,6 +135,17 @@
         - import { UserContractsTileComponent } from './contracts/user-contracts-tile/user-contracts-tile.component';
         -  add after this.validationDetailService.register(ProductDependencyCheckComponent, 'ProductDependencyCheck');
             - this.extService.register('Dashboard-MediumTiles', {instance: UserContractsTileComponent});
-            
 
+## Finne ut hva som må endres / legges til hvor.
+    - Finne en tag på websiden som f.eks #LDS#Add to cart
+    - Søke etter denne i VSCode
+        - Gjør en endring f.eks på teksten og lagre.
+        - Laste web på nytt så man vet man er på            
+
+
+## Custom control for profitcenter
+    - Make a custom control that select profitcenter when adding to chart
+        - .\imxweb> ng generate component new-request/new-request-content/profitcenter-dialog --skip-tests --project=qer --style=scss --export --prefix=ccc    
+        - In .\imxweb\projects\qer\src\public_api.ts
+            -export {ProfitcenterDialogComponent} from './lib/new-request/new-request-content/profitcenter-dialog/profitcenter-dialog.component'
     

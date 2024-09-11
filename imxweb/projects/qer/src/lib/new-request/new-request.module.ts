@@ -65,6 +65,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NewRequestReferenceUserCardComponent } from './new-request-header/new-request-reference-user-card/new-request-reference-user-card.component';
 import { ElementVisibilityDirective } from './element-visibility.directive';
 import { PeerGroupDiscardSelectedComponent } from './new-request-peer-group/peer-group-discard-selected.component';
+import { ProfitcenterDialogComponent } from './new-request-content/profitcenter-dialog/profitcenter-dialog.component';
 @NgModule({
   declarations: [
     NewRequestComponent,
@@ -84,6 +85,7 @@ import { PeerGroupDiscardSelectedComponent } from './new-request-peer-group/peer
     NewRequestReferenceUserCardComponent,
     ElementVisibilityDirective,
     PeerGroupDiscardSelectedComponent,
+    ProfitcenterDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -106,7 +108,7 @@ import { PeerGroupDiscardSelectedComponent } from './new-request-peer-group/peer
     MatTableModule,
     HelpContextualModule
   ],
-  exports: [NewRequestComponent],
+  exports: [NewRequestComponent, ProfitcenterDialogComponent],
 })
 export class NewRequestModule {
   constructor(private readonly menuService: MenuService, logger: ClassloggerService) {
